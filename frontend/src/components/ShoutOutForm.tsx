@@ -48,3 +48,4 @@ function ShoutOutForm({onSubmit}: Props) {
           );
         }
     
+        export default ShoutOutForm;

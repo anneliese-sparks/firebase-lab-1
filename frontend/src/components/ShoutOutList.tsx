@@ -1,8 +1,10 @@
 
 import { useEffect, useState } from "react";
 import ShoutOut from "../model/Shoutout";
-import { readAllShoutouts } from "../service/ShoutoutApiService";
+import { readAllShoutouts, createShoutout } from "../service/ShoutoutApiService";
 import ShoutOutCard from "./ShoutOutCard";
+import ShoutOutForm from "./ShoutOutForm";
+import "./ShoutOutList.css"
 
 
 function ShoutOutList() {
@@ -19,6 +21,12 @@ function loadShoutOuts() {
         setShoutOutsLoaded(true);
     });
 }
+
+function handleAddShoutOut(shoutOut: ShoutOut): void {
+    createShoutout(shoutOut).then(loadShoutOuts)
+    }
+
+
 return (
     <div className="ShoutOutList">
         { !shoutOutsLoaded ?
@@ -28,7 +36,8 @@ return (
             : 
             shoutOuts.map(eachShoutOut =>
             <ShoutOutCard key={eachShoutOut._id} shoutout={eachShoutOut} />)}
-        
+            <h2>Add Shout Out</h2>
+            <ShoutOutForm onSubmit={handleAddShoutOut}/>
     </div>
 )
 }

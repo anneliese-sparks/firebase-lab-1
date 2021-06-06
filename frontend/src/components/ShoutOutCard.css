@@ -1,0 +1,10 @@
+.ShoutOutCard {
+    border: 2px solid black;
+    width: 300px;
+    margin: 10px;
+}
+
+.ShoutOutTo, .ShoutOutFrom, .ShoutOutMessage {
+    margin: 10px;
+}
+
